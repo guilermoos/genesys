@@ -5,7 +5,7 @@ InferenceLog model for tracking inference requests.
 from datetime import datetime
 from typing import Optional, Dict, Any, List
 
-from sqlalchemy import String, ForeignKey, DateTime, Float, JSON
+from sqlalchemy import String, ForeignKey, DateTime, Float, JSON, Integer
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.models.base import Base
@@ -42,7 +42,7 @@ class InferenceLog(Base):
     )
     
     # Additional metadata
-    metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSON, nullable=True)
+    extra_metadata: Mapped[Optional[Dict[str, Any]]] = mapped_column(JSON, nullable=True)
     
     # Relationships
     project: Mapped["Project"] = relationship("Project", back_populates="inference_logs")

@@ -30,7 +30,7 @@ async def lifespan(app: FastAPI):
     
     print(f"🚀 {settings.APP_NAME} v{settings.APP_VERSION} started")
     print(f"📊 Database: {settings.DATABASE_URL}")
-    print(f"🤖 Templates: {__import__('app.templates.base').TemplateRegistry.list_templates()}")
+    print(f"🤖 Templates: {TemplateRegistry.list_templates()}")
     
     yield
     

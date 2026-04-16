@@ -13,7 +13,6 @@ from app.models.project import Project
 from app.schemas.training_job import TrainingJobCreate, TrainingConfig
 from app.utils.id_generator import generate_uuid
 from app.templates.base import TemplateRegistry
-from app.workers.training_tasks import run_training_job
 
 
 class TrainingService:
@@ -69,7 +68,8 @@ class TrainingService:
         db.commit()
         db.refresh(job)
         
-        # Queue the job with Celery
+        # Queue the job with Celery (import here to avoid circular import)
+        from app.workers.training_tasks import run_training_job
         task = run_training_job.delay(job.id)
         
         # Store Celery task ID

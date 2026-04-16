@@ -94,7 +94,7 @@ class InferenceService:
             confidence=confidence,
             inference_time_ms=inference_time_ms,
             timestamp=datetime.utcnow(),
-            metadata=metadata,
+            extra_metadata=metadata,
         )
         
         db.add(log)

@@ -5,7 +5,7 @@ Pydantic schemas for Inference entity.
 from datetime import datetime
 from typing import Optional, Dict, Any, List
 
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict, field_validator
 
 
 class InferenceRequest(BaseModel):
